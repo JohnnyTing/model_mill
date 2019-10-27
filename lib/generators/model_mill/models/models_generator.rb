@@ -35,8 +35,12 @@ module ModelMill
         template 'base.rb', "app/models/#{options[:namespace]}/base.rb"
       end
 
+      def filter_table_names
+        %w(ar_internal_metadatum, schema_migration, spatial_ref_sy)
+      end
+
       def discovered_tables
-        connection.tables.sort
+        connection.tables.reject { |name| filter_table_names.include?(name) }.sort
       end
 
       def model_name_from_table_name tn
