@@ -36,7 +36,7 @@ module ModelMill
       end
 
       def filter_table_names
-        %w(ar_internal_metadatum, schema_migration, spatial_ref_sy)
+        %w(ar_internal_metadata schema_migrations spatial_ref_sys)
       end
 
       def discovered_tables
